@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<konferencia>
+    <cim>Nemzetközi Informatikai Konferencia</cim>
+    <datum>2025-05-15</datum>
+    <helyszin>Budapest</helyszin>
+    
+    <eloadok>
+        <eloado>
+            <nev>Kiss Péter</nev>
+            <lakcim>Budapest, Fő utca 12.</lakcim>
+            <adoszam>12345678-1-12</adoszam>
+        </eloado>
+        <eloado>
+            <nev>Nagy Anna</nev>
+            <lakcim>Szeged, Kossuth tér 5.</lakcim>
+            <adoszam>87654321-2-34</adoszam>
+        </eloado>
+    </eloadok>
+
+    <hallgatok>
+        <hallgato>
+            <nev>Kovács Béla</nev>
+            <lakcim>Debrecen, Piac utca 7.</lakcim>
+        </hallgato>
+        <hallgato>
+            <nev>Szabó Éva</nev>
+            <lakcim>Pécs, Rákóczi út 10.</lakcim>
+        </hallgato>
+    </hallgatok>
+</konferencia>

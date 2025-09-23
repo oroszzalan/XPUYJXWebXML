@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Órarend</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#3b82f6;
+      --stripe:#f3f4f6;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%;margin:0;background:var(--bg);color:#0f172a}
+    .wrap{max-width:1100px;margin:32px auto;padding:20px}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    header h1{font-size:1.25rem;margin:0}
+    header p{margin:0;color:var(--muted);font-size:0.95rem}
+
+    .card{background:var(--card);border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.06);padding:18px}
+
+    .controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .controls select{padding:8px 10px;border-radius:8px;border:1px solid #e6e9ef;background:white}
+
+    table{width:100%;border-collapse:collapse;font-size:0.95rem}
+    thead th{position:sticky;top:0;background:#fff;border-bottom:2px solid #eef2ff;padding:12px 10px;text-align:left;z-index:2}
+    tbody tr{background:transparent}
+    tbody tr:nth-child(even) td{background:var(--stripe)}
+    td{padding:10px;border-bottom:1px solid #eef2ff;vertical-align:top}
+    .pill{display:inline-block;padding:4px 8px;border-radius:999px;background:#eef2ff;color:var(--accent);font-weight:600;font-size:0.8rem}
+
+    @media (max-width:880px){
+      thead{display:none}
+      table,tbody,thead,tr{display:block;width:100%}
+      tr{margin-bottom:12px;border-radius:10px;overflow:hidden}
+      td{display:flex;justify-content:space-between;padding:10px;background:white;border-bottom:1px solid rgba(15,23,42,0.04)}
+      td::before{content:attr(data-label);font-weight:600;color:var(--muted);margin-right:8px}
+    }
+    .tiny{font-size:0.85rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Órarend</h1>
+    </header>
+
+    <div class="card">
+      <div class="controls">
+        <label class="tiny">Szűrés nap szerint:</label>
+        <select id="dayFilter">
+          <option value="all">Összes nap</option>
+          <option>Hétfő</option>
+          <option>Kedd</option>
+          <option>Szerda</option>
+        </select>
+      </div>
+
+      <table id="orarend">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Típus</th>
+            <th>Tantárgy</th>
+            <th>Nap</th>
+            <th>Időpont</th>
+            <th>Helyszín</th>
+            <th>Oktató(k)</th>
+            <th>Szak</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="ID">1</td>
+            <td data-label="Típus">eloadas</td>
+            <td data-label="Tantárgy">Web technológiák 1.</td>
+            <td data-label="Nap">Hétfő</td>
+            <td data-label="Időpont">10:00 — 12:00</td>
+            <td data-label="Helyszín">5. előadó</td>
+            <td data-label="Oktató(k)">Dr. Agárdi Anita</td>
+            <td data-label="Szak">Programtervező</td>
+          </tr>
+
+          <tr>
+            <td data-label="ID">2</td>
+            <td data-label="Típus">eloadas</td>
+            <td data-label="Tantárgy">Mesterséges intelligencia alapok</td>
+            <td data-label="Nap">Kedd</td>
+            <td data-label="Időpont">10:00 — 12:00</td>
+            <td data-label="Helyszín">32.előadó</td>
+            <td data-label="Oktató(k)">Kunné Dr. Tamás Judit<br>Fazekas Levente Áron</td>
+            <td data-label="Szak">Programtervező</td>
+          </tr>
+
+          <tr>
+            <td data-label="ID">3</td>
+            <td data-label="Típus">gyakorlat</td>
+            <td data-label="Tantárgy">Mesterséges intelligencia alapok</td>
+            <td data-label="Nap">Kedd</td>
+            <td data-label="Időpont">12:00 — 14:00</td>
+            <td data-label="Helyszín">32.előadó</td>
+            <td data-label="Oktató(k)">Kunné Dr. Tamás Judit<br>Fazekas Levente Áron</td>
+            <td data-label="Szak">Programtervező</td>
+          </tr>
+
+          <tr>
+            <td data-label="ID">4</td>
+            <td data-label="Típus">elmélet</td>
+            <td data-label="Tantárgy">Algoritmusok és vizsgálatuk</td>
+            <td data-label="Nap">Kedd</td>
+            <td data-label="Időpont">14:00 — 16:00</td>
+            <td data-label="Helyszín">E30</td>
+            <td data-label="Oktató(k)">Dr. Házy Attila</td>
+            <td data-label="Szak">Program tervező informatikus Bsc</td>
+          </tr>
+
+          <tr>
+            <td data-label="ID">5</td>
+            <td data-label="Típus">gyakorlat</td>
+            <td data-label="Tantárgy">Algoritmusok és vizsgálatuk</td>
+            <td data-label="Nap">Kedd</td>
+            <td data-label="Időpont">16:00 — 18:00</td>
+            <td data-label="Helyszín">E30</td>
+            <td data-label="Oktató(k)">Dr. Házy Attila</td>
+            <td data-label="Szak">Program tervező informatikus Bsc</td>
+          </tr>
+
+          <tr>
+            <td data-label="ID">6</td>
+            <td data-label="Típus">eloadas</td>
+            <td data-label="Tantárgy">Webes adatkezelő környezetek</td>
+            <td data-label="Nap">Szerda</td>
+            <td data-label="Időpont">08:00 — 10:00</td>
+            <td data-label="Helyszín">A1 310</td>
+            <td data-label="Oktató(k)">Dr. Kovács László József</td>
+            <td data-label="Szak">Programtervező</td>
+          </tr>
+
+          <tr>
+            <td data-label="ID">7</td>
+            <td data-label="Típus">gyakorlat</td>
+            <td data-label="Tantárgy">Webes adatkezelő környezetek</td>
+            <td data-label="Nap">Szerda</td>
+            <td data-label="Időpont">10:00 — 12:00</td>
+            <td data-label="Helyszín">info 103</td>
+            <td data-label="Oktató(k)">Dr. Kovács László József</td>
+            <td data-label="Szak">Programtervező</td>
+          </tr>
+
+          <tr>
+            <td data-label="ID">8</td>
+            <td data-label="Típus">gyakorlat</td>
+            <td data-label="Tantárgy">Web technológiák 1.</td>
+            <td data-label="Nap">Szerda</td>
+            <td data-label="Időpont">12:00 — 14:00</td>
+            <td data-label="Helyszín">L101</td>
+            <td data-label="Oktató(k)">Dr. Bednarik László</td>
+            <td data-label="Szak">Programtervező</td>
+          </tr>
+
+          <tr>
+            <td data-label="ID">9</td>
+            <td data-label="Típus">eloadas</td>
+            <td data-label="Tantárgy">Vállalati információs rendszerek fejlesztése</td>
+            <td data-label="Nap">Szerda</td>
+            <td data-label="Időpont">14:00 — 16:00</td>
+            <td data-label="Helyszín">L103</td>
+            <td data-label="Oktató(k)">Dr. Sasvári Péter László</td>
+            <td data-label="Szak">Programtervező</td>
+          </tr>
+
+          <tr>
+            <td data-label="ID">10</td>
+            <td data-label="Típus">gyakorlat</td>
+            <td data-label="Tantárgy">Vállalati információs rendszerek fejlesztése</td>
+            <td data-label="Nap">Szerda</td>
+            <td data-label="Időpont">18:00 — 20:00</td>
+            <td data-label="Helyszín">L103</td>
+            <td data-label="Oktató(k)">Dr. Sasvári Péter László</td>
+            <td data-label="Szak">Programtervező</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // egyszerű kliens oldali szűrő nap szerint
+    const filter = document.getElementById('dayFilter');
+    filter.addEventListener('change',()=>{
+      const val = filter.value;
+      const rows = document.querySelectorAll('#orarend tbody tr');
+      rows.forEach(r=>{
+        const nap = r.children[3].textContent.trim();
+        if(val==='all' || nap===val) r.style.display='table-row'; else r.style.display='none';
+      });
+    });
+  </script>
+</body>
+</html>
