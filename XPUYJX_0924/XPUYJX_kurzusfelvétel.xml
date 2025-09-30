@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE XPUYJX_kurzusfelvétel SYSTEM "XPUYJX_kurzusfelvétel.dtd">
+<XPUYJX_kurzusfelvétel tanev="2025/26 I. félév" egyetem="Miskolci Egyetem">
+
+    <hallgato>
+        <hnev>Orosz Zalán Zétény</hnev>
+        <szulev>2004</szulev>
+        <szak evf="3">Programtervező informatikus</szak>
+    </hallgato>
+
+    <kurzusok>
+        <kurzus id="XPUYJX" jovahagyas="igen" nyelv="magyar">
+            <kurzusnev>Web Technologiak 1</kurzusnev>
+            <kredit>5</kredit>
+            <hely>A1 magasfsz V.ea.</hely>
+            <idopont>Hétfő 10:00-12:00</idopont>
+            <oktato>Agradi Anita</oktato>
+        </kurzus>
+
+        <kurzus id="XPUYJX" jovahagyas="igen" nyelv="magyar">
+            <kurzusnev>Webes adatkezelo kornyezetek</kurzusnev>
+            <kredit>5</kredit>
+            <hely>Inf103</hely>
+            <idopont>Szerda 08:00-10:00</idopont>
+            <idopont>Szerda 12:00-14:00</idopont>
+            <oktato>Dr. Kovacs Laszlo Jozsef</oktato>
+            <oraado>Dr. Bednarik Laszlo</oraado>
+        </kurzus>
+
+        <kurzus id="XPUYJX" jovahagyas="igen" nyelv="angol">
+            <kurzusnev>Muszaki szaknyelv 1</kurzusnev>
+            <kredit>0</kredit>
+            <hely>A1/316 III.ea.</hely>
+            <idopont>Hétfő 12:00-14:00</idopont>
+            <oktato>Pataki Janosne</oktato>
+        </kurzus>
+
+        <kurzus id="XPUYJX" jovahagyas="igen" nyelv="magyar">
+            <kurzusnev>Mesterseges Intelligencia alapjai</kurzusnev>
+            <kredit>5</kredit>
+            <hely>A1 XXXII.ea.</hely>
+            <idopont>Szerda 10:00-14:00</idopont>
+            <oktato>Kunne Dr. Tamas Judit</oktato>
+            <oraado>Fazekas Levente</oraado>
+        </kurzus>
+
+        <kurzus id="XPUYJX" jovahagyas="igen" nyelv="magyar">
+            <kurzusnev>Vallalati informacios rendszerek</kurzusnev>
+            <kredit>5</kredit>
+            <hely>Inf101</hely>
+            <idopont>Hétfő 16:00-18:00</idopont>
+            <oktato>Dr. Sasvari Peter</oktato>
+        </kurzus>
+
+    </kurzusok>
+</XPUYJX_kurzusfelvétel>

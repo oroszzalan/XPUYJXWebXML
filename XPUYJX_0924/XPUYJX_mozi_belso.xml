@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mozi [
+    <!ELEMENT mozi (film*)>
+
+    <!ELEMENT film (rendezo+, szinesz+, iro+)>
+    <!ATTLIST film
+        id ID #REQUIRED
+        mufaj (horror | vigjatek | drama) #REQUIRED>
+
+    <!ELEMENT rendezo EMPTY>
+    <!ATTLIST rendezo
+        id ID #REQUIRED
+        nev CDATA #IMPLIED>
+
+    <!ELEMENT szinesz (gyerekszinesz?, musicalszinesz?, szinkronszinesz?)?>
+    <!ATTLIST szinesz
+        id ID #REQUIRED
+        nev CDATA #IMPLIED>
+
+    <!ELEMENT gyerekszinesz EMPTY>
+    <!ELEMENT musicalszinesz EMPTY>
+    <!ELEMENT szinkronszinesz EMPTY>
+
+    <!ELEMENT iro EMPTY>
+    <!ATTLIST iro
+        id ID #REQUIRED
+        nev CDATA #IMPLIED>
+]>
+
+<mozi>
+    <film id="f1" mufaj="horror">
+        <rendezo id="r1" nev="Alex"/>
+        <szinesz id="s1" nev="Madison_Ivy"/>
+        <iro id="i1" nev="Lajos"/>
+    </film>
+</mozi>

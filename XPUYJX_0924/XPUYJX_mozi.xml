@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mozi SYSTEM "XPUYJX_mozi.dtd">
+<mozi>
+    <film id="f1" mufaj="vigjatek">
+        <rendezo id="r1" nev="Ferenc"/>
+        <szinesz id="s1" nev="Judit"/>
+        <iro id="i1" nev="Csenge"/>
+    </film>
+</mozi>
