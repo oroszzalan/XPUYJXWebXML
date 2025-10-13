@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+    <!-- Gyökérelem -->
+    <xs:element name="XPUYJX_orarend">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ora" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="targy" type="xs:string"/>
+                            
+                            <xs:element name="idopont">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nap" type="xs:string"/>
+                                        <xs:element name="tol" type="xs:string"/>
+                                        <xs:element name="ig" type="xs:string"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            
+                            <xs:element name="helyszin" type="xs:string"/>
+                            
+                            <!-- Több oktató is lehet -->
+                            <xs:element name="oktato" type="xs:string" maxOccurs="unbounded"/>
+                            
+                            <xs:element name="szak" type="xs:string"/>
+                        </xs:sequence>
+                        
+                        <!-- Attribútumok: id és tipus -->
+                        <xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+                        <xs:attribute name="tipus" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="eloadas"/>
+                                    <xs:enumeration value="gyakorlat"/>
+                                    <xs:enumeration value="elmélet"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
