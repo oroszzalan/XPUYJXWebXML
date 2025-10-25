@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ettermek>
+
+  <Etterem>
+    <Ekod>E001</Ekod>
+    <Nev>Napfény Étterem</Nev>
+    <Cim>
+      <Varos>Budapest</Varos>
+      <Utca>Kossuth Lajos utca</Utca>
+      <Hazszam>12</Hazszam>
+    </Cim>
+    <Csillag>4</Csillag>
+
+    <Foszakacs>
+      <Fkod>F001</Fkod>
+      <Nev>Kiss Péter</Nev>
+      <Eletkor>45</Eletkor>
+      <Vegzettseg>Mester szakács</Vegzettseg>
+    </Foszakacs>
+
+    <Szakacs>
+      <Szkod>S001</Szkod>
+      <Nev>Nagy László</Nev>
+      <Reszleg>Hidegkonyha</Reszleg>
+      <Vegzettseg>Szakács</Vegzettseg>
+    </Szakacs>
+    <Szakacs>
+      <Szkod>S002</Szkod>
+      <Nev>Szabó Mária</Nev>
+      <Reszleg>Melegkonyha</Reszleg>
+      <Vegzettseg>Szakács</Vegzettseg>
+    </Szakacs>
+
+    <Gyakornok>
+      <Gykod>G001</Gykod>
+      <Nev>Kovács Dóra</Nev>
+      <Gyakorlat>Szakmai gyakorlat</Gyakorlat>
+      <Kezdete>2025-06-01</Kezdete>
+      <Idotartama>3</Idotartama>
+      <Muszak>Délelőtt</Muszak>
+    </Gyakornok>
+
+    <Rendeles>
+      <Osszeg>12500</Osszeg>
+      <Etel>Marhapörkölt galuskával</Etel>
+      <Vendeg>
+        <Vkod>V001</Vkod>
+        <Nev>Tóth Anna</Nev>
+        <Eletkor>32</Eletkor>
+        <Cim>
+          <Varos>Pécs</Varos>
+          <Utca>Rákóczi út</Utca>
+          <Hazszam>5</Hazszam>
+        </Cim>
+      </Vendeg>
+    </Rendeles>
+
+    <Rendeles>
+      <Osszeg>8900</Osszeg>
+      <Etel>Grillezett csirkemell salátával</Etel>
+      <Vendeg>
+        <Vkod>V002</Vkod>
+        <Nev>Németh Gábor</Nev>
+        <Eletkor>28</Eletkor>
+        <Cim>
+          <Varos>Szeged</Varos>
+          <Utca>Petőfi Sándor utca</Utca>
+          <Hazszam>8</Hazszam>
+        </Cim>
+      </Vendeg>
+    </Rendeles>
+
+  </Etterem>
+
+  <Etterem>
+    <Ekod>E002</Ekod>
+    <Nev>Tenger Szeme Étterem</Nev>
+    <Cim>
+      <Varos>Balatonfüred</Varos>
+      <Utca>Parti sétány</Utca>
+      <Hazszam>3</Hazszam>
+    </Cim>
+    <Csillag>5</Csillag>
+
+    <Foszakacs>
+      <Fkod>F002</Fkod>
+      <Nev>Horváth Katalin</Nev>
+      <Eletkor>39</Eletkor>
+      <Vegzettseg>Executive Chef</Vegzettseg>
+    </Foszakacs>
+
+    <Szakacs>
+      <Szkod>S003</Szkod>
+      <Nev>Török András</Nev>
+      <Reszleg>Tenger gyümölcsei</Reszleg>
+      <Vegzettseg>Szakács</Vegzettseg>
+    </Szakacs>
+
+    <Gyakornok>
+      <Gykod>G002</Gykod>
+      <Nev>Balogh Eszter</Nev>
+      <Gyakorlat>Nyári gyakorlat</Gyakorlat>
+      <Kezdete>2025-07-01</Kezdete>
+      <Idotartama>2</Idotartama>
+      <Muszak>Délután</Muszak>
+    </Gyakornok>
+
+    <Rendeles>
+      <Osszeg>17500</Osszeg>
+      <Etel>Lazacfilé citrommártással</Etel>
+      <Vendeg>
+        <Vkod>V003</Vkod>
+        <Nev>Kerekes Zoltán</Nev>
+        <Eletkor>41</Eletkor>
+        <Cim>
+          <Varos>Győr</Varos>
+          <Utca>Király utca</Utca>
+          <Hazszam>11</Hazszam>
+        </Cim>
+      </Vendeg>
+    </Rendeles>
+  </Etterem>
+
+</Ettermek>

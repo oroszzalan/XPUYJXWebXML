@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ITF-8"?>
+
+<xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+<xs:element name="vendeglatasType">
+    <xs:complexType>
+     <xs:sequence>
+      <xs:element name="etterem" type="etteremTpye">
+      <xs:element name="foszakacs" type="foszakacsType">
+      <xs:element name="szakacs" type="szakacsType">
+      <xs:element name="gyakornok" type="gyakornokType">
+      <xs:element name="rendeles" type="rendelesType">
+      <xs:element name="vendeg" type="vendegtype">
+     </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:complexType name="etteremType">
+ <xs:sequence>
+  <xs:element name="nev" type="xs:string">
+  <xs:element name="cim"  type="cimTipus">
+  <xs:element name="csillag" type="xs:int">
+ </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="foszakacsType">
+ <xs:sequence>
+  <xs:element name="nev" type="xs:string">
+  <xs:element name="eletkor"  type="xs:int">
+  <xs:element name="vegzettseg" type="xs:string">
+ </xs:sequence>
+</xs:simpleType>
+
+<xs:simpleType name="szakacsType">
+ <xs:sequence>
+  <xs:element name="nev" type="xs:string">
+  <xs:element name="eletkor"  type="xs:int">
+  <xs:element name="vegzettseg" type="xs:string">
+ </xs:sequence>
+</xs:simpleType>
+
+<xs:complexType name="gyakornokType">
+ <xs:sequence>
+  <xs:element name="nev" type="xs:string">
+  <xs:element name="gyakorlat"  type="xs:string">
+  <xs:element name="muszak" type="muszakType">
+ </xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="rendelesType">
+ <xs:sequence>
+  <xs:element name="osszeg" type="xs:int">
+  <xs:element name="etel"  type="xs:string">
+ </xs:sequence>
+</xs:simpleType>
+
+<xs:complexType name="vendegtype">
+ <xs:sequence>
+  <xs:element name="nev" type="xs:string">
+  <xs:element name="eletkor"  type="xs:int">
+  <xs:element name="cim" type="cimType">
+ </xs:sequence>
+</xs:complexType>
