@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- ================== FOSZAKACS ================== -->
+  <xs:complexType name="FoszakacsType">
+    <xs:sequence>
+      <xs:element name="Fkod" type="xs:string"/>
+      <xs:element name="Nev" type="xs:string"/>
+      <xs:element name="Eletkor" type="xs:integer"/>
+      <xs:element name="Vegzettseg" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ================== CIM ================== -->
+  <xs:complexType name="CimType">
+    <xs:sequence>
+      <xs:element name="Varos" type="xs:string"/>
+      <xs:element name="Utca" type="xs:string"/>
+      <xs:element name="Hazszam" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ================== ETTEREM ================== -->
+  <xs:complexType name="EtteremType">
+    <xs:sequence>
+      <xs:element name="Ekod" type="xs:string"/>
+      <xs:element name="Nev" type="xs:string"/>
+      <xs:element name="Cim" type="CimType"/>
+      <xs:element name="Csillag" type="xs:integer" minOccurs="0"/>
+      <xs:element name="Foszakacs" type="FoszakacsType"/>
+      <xs:element name="Szakacs" type="SzakacsType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Gyakornok" type="GyakornokType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="Rendeles" type="RendelesType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ================== SZAKACS ================== -->
+  <xs:complexType name="SzakacsType">
+    <xs:sequence>
+      <xs:element name="Szkod" type="xs:string"/>
+      <xs:element name="Nev" type="xs:string"/>
+      <xs:element name="Reszleg" type="xs:string"/>
+      <xs:element name="Vegzettseg" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ================== GYAKORNOK ================== -->
+  <xs:complexType name="GyakornokType">
+    <xs:sequence>
+      <xs:element name="Gykod" type="xs:string"/>
+      <xs:element name="Nev" type="xs:string"/>
+      <xs:element name="Gyakorlat" type="xs:string"/>
+      <xs:element name="Kezdete" type="xs:date"/>
+      <xs:element name="Idotartama" type="xs:integer"/>
+      <xs:element name="Muszak" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ================== VENDEG ================== -->
+  <xs:complexType name="VendegType">
+    <xs:sequence>
+      <xs:element name="Vkod" type="xs:string"/>
+      <xs:element name="Nev" type="xs:string"/>
+      <xs:element name="Eletkor" type="xs:integer"/>
+      <xs:element name="Cim" type="CimType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ================== RENDELES ================== -->
+  <xs:complexType name="RendelesType">
+    <xs:sequence>
+      <xs:element name="Osszeg" type="xs:decimal"/>
+      <xs:element name="Etel" type="xs:string"/>
+      <xs:element name="Vendeg" type="VendegType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- ================== GYOKER ELEM ================== -->
+  <xs:element name="Ettermek">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Etterem" type="EtteremType" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
