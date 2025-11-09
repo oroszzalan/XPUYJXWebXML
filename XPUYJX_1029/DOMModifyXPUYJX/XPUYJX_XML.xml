@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Vendeglatas>
+    
+    <etterem E1="1">
+        <nev>Peti Főzdéje</nev>
+        <cím>
+            <város>Msikolc</város>
+            <utca>Robert</utca>
+            <házszám>19</házszám>
+        </cím>
+        <csillag>1</csillag>
+    </etterem>
+
+
+    <Főszakács Fkod="F_1" E_F="1">
+        <nev>Losonczi Dominik</nev>
+        <Eletkor>sok</Eletkor>
+        <végzetség>
+            napsugár csoport
+            élet iskolája
+        </végzetség>
+    </Főszakács>
+
+    <szakacs SZkod="2" E_Sz="1">
+        <nev>Mizerák Bence</nev>
+        <életkor>-3</életkor>
+        <végzetség>
+            chatGPT
+        </végzetség>
+    </szakacs>
+	
+	<gyakornok GYkod="fero" E_GY="1">
+        <nev>Ferencsik Robert</nev>
+        <gyakorlat>helyből távolba nézzés</gyakorlat>
+        <műszak>
+            <kezdete>3:00</kezdete>
+            <ídőtartalma>végtelen</ídőtartalma>
+        </műszak>
+    </gyakornok>
+	
+    <rendeles E_R="1" Rkod="asd">
+        <összeg>nem elég</összeg>
+        <étel>nyakleves</étel>
+    </rendeles>
+
+    <vendég Vkod="asd">
+        <név>Vass Martin</név>
+        <életkor>-9</életkor>
+        <cím>
+            <város>Pest</város>
+            <utca>Bodó</utca>
+            <házszám>13</házszám>
+        </cím>
+    </vendég>
+
+</Vendeglatas>
