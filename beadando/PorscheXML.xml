@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XPUYJYSzalon>
+
+    <PorscheDealer dealerID="D_1">
+        <managerName>Gábor Szabó</managerName>
+        <numOfEmployees>25</numOfEmployees>
+        <rating>4.8</rating>
+    </PorscheDealer>
+
+    <!--customers-->
+
+    <Customer Cid="C_1" P-C="PU_1">
+        <name>John Doe</name>
+        <phone>+36-20-123-4567</phone>
+        <email>john.doe@example.com</email>
+        <birthDate>1985-04-12</birthDate>
+        <address>
+            <city>Budapest</city>
+            <street>Fő utca</street>
+            <houseNumber>10</houseNumber>
+        </address>
+    </Customer>
+
+    <Customer Cid="C_2" P-C="PU_2">
+        <name>Jane Smith</name>
+        <phone>+36-30-111-2222</phone>
+        <email>jane.smith@example.com</email>
+        <birthDate>1990-01-05</birthDate>
+        <address>
+            <city>Budapest</city>
+            <street>Petőfi Sándor utca</street>
+            <houseNumber>5</houseNumber>
+        </address>
+    </Customer>
+
+    <Customer Cid="C_3" P-C="PU_3">
+        <name>Péter Nagy</name>
+        <phone>+36-70-333-4444</phone>
+        <email>peter.nagy@example.com</email>
+        <birthDate>1978-07-20</birthDate>
+        <address>
+            <city>Debrecen</city>
+            <street>Piac utca</street>
+            <houseNumber>2</houseNumber>
+        </address>
+    </Customer>
+
+    <Customer Cid="C_4" P-C="PU_4">
+        <name>Éva Tóth</name>
+        <phone>+36-20-555-6666</phone>
+        <email>eva.toth@example.com</email>
+        <birthDate>1995-03-11</birthDate>
+        <address>
+            <city>Szeged</city>
+            <street>Arany János utca</street>
+            <houseNumber>8</houseNumber>
+        </address>
+    </Customer>
+
+    <Customer Cid="C_5" P-C="PU_5">
+        <name>Balázs Kiss</name>
+        <phone>+36-30-777-8888</phone>
+        <email>balazs.kiss@example.com</email>
+        <birthDate>1982-11-30</birthDate>
+        <address>
+            <city>Pécs</city>
+            <street>Kossuth Lajos utca</street>
+            <houseNumber>21</houseNumber>
+        </address>
+    </Customer>
+
+    <!--customer relationships-->
+    <CustomerRel purchaseID="PU_1" D-C="D_1">
+        <loyaltyPoints>70</loyaltyPoints>
+        <preferedTechnician>Anna Kovács</preferedTechnician>
+    </CustomerRel>
+
+     <CustomerRel purchaseID="PU_2" D-C="D_1">
+        <loyaltyPoints>85</loyaltyPoints>
+        <preferedTechnician>László Fekete</preferedTechnician>
+    </CustomerRel>
+
+    <CustomerRel purchaseID="PU_3" D-C="D_1">
+        <loyaltyPoints>40</loyaltyPoints>
+        <preferedTechnician>Réka Horváth</preferedTechnician>
+    </CustomerRel>
+
+    <CustomerRel purchaseID="PU_4" D-C="D_1">
+        <loyaltyPoints>200</loyaltyPoints>
+        <preferedTechnician>Zoltán Varga</preferedTechnician>
+    </CustomerRel>
+
+    <CustomerRel purchaseID="PU_5" D-C="D_1">
+        <loyaltyPoints>120</loyaltyPoints>
+        <preferedTechnician>Eszter Molnár</preferedTechnician>
+    </CustomerRel>
+
+    <!--vehicles-->
+
+    <Vehicle VIN="WP0ZZZ99ZTS392124" V-P="D_1">
+        <model>911 Carrera</model>
+        <year>2019</year>
+        <color>White</color>
+        <mileage>45200</mileage>
+        <purchaseDate>2019-06-15</purchaseDate>
+    </Vehicle>
+
+    <Vehicle VIN="WP0ZZZ99ZTS392125" V-P="D_1">
+        <model>Cayenne</model>
+        <year>2020</year>
+        <color>Black</color>
+        <mileage>27000</mileage>
+        <purchaseDate>2020-09-01</purchaseDate>
+    </Vehicle>
+
+    <Vehicle VIN="WP0ZZZ99ZTS392126" V-P="D_1">
+        <model>Panamera</model>
+        <year>2018</year>
+        <color>Silver</color>
+        <mileage>61000</mileage>
+        <purchaseDate>2018-04-20</purchaseDate>
+    </Vehicle>
+
+    <Vehicle VIN="WP0ZZZ99ZTS392127" V-P="D_1">
+        <model>Boxster</model>
+        <year>2021</year>
+        <color>Blue</color>
+        <mileage>12000</mileage>
+        <purchaseDate>2021-05-10</purchaseDate>
+    </Vehicle>
+
+    <Vehicle VIN="WP0ZZZ99ZTS392128" V-P="D_1">
+        <model>Cayman</model>
+        <year>2017</year>
+        <color>Red</color>
+        <mileage>89000</mileage>
+        <purchaseDate>2017-08-23</purchaseDate>
+    </Vehicle>
+
+    <Vehicle VIN="WP0ZZZ99ZTS392129" V-P="D_1">
+        <model>Macan</model>
+        <year>2022</year>
+        <color>Grey</color>
+        <mileage>8000</mileage>
+        <purchaseDate>2022-02-14</purchaseDate>
+    </Vehicle>
+
+    <!--parts-->
+
+    <Part Pid="P_1" P-P="D_1">
+        <name>Brake Pad Set</name>
+        <manufacturer>Porsche OEM</manufacturer>
+        <listPrice currency="EUR">320.00</listPrice>
+        <compatibleModels>
+            <model>911 Carrera</model>
+            <model>Boxster</model>
+        </compatibleModels>
+    </Part>
+
+    <Part Pid="P_001" P-P="D_1">
+        <name>Shock Absorber</name>
+        <manufacturer>Porsche OEM</manufacturer>
+        <listPrice currency="EUR">180.00</listPrice>
+        <compatibleModels>
+            <model>911 Carrera</model>
+            <model>Boxster</model>
+        </compatibleModels>
+    </Part>
+
+    <Part Pid="P_002" P-P="D_1">
+        <name>Control Arm</name>
+        <manufacturer>Porsche OEM</manufacturer>
+        <listPrice currency="EUR">220.00</listPrice>
+        <compatibleModels>
+            <model>Panamera</model>
+            <model>Cayenne</model>
+        </compatibleModels>
+    </Part>
+
+    <Part Pid="P_003" P-P="D_1">
+        <name>Brake Disc</name>
+        <manufacturer>Porsche OEM</manufacturer>
+        <listPrice currency="EUR">150.00</listPrice>
+        <compatibleModels>
+            <model>911 Carrera</model>
+        </compatibleModels>
+    </Part>
+
+    <Part Pid="P_004" P-P="D_1">
+        <name>Turbocharger</name>
+        <manufacturer>Porsche OEM</manufacturer>
+        <listPrice currency="EUR">2500.00</listPrice>
+        <compatibleModels>
+            <model>911 Turbo</model>
+        </compatibleModels>
+    </Part>
+
+    <Part Pid="P_005" P-P="D_1">
+        <name>Gearbox Mechatronics</name>
+        <manufacturer>Porsche OEM</manufacturer>
+        <listPrice currency="EUR">1200.00</listPrice>
+        <compatibleModels>
+            <model>PDK</model>
+        </compatibleModels>
+    </Part>
+
+    <Part Pid="P_006" P-P="D_1">
+        <name>Oil Cooler</name>
+        <manufacturer>Porsche OEM</manufacturer>
+        <listPrice currency="EUR">340.00</listPrice>
+        <compatibleModels>
+            <model>911 Carrera</model>
+            <model>Cayman</model>
+        </compatibleModels>
+    </Part>
+
+    <Part Pid="P_007" P-P="D_1">
+        <name>AC Condenser</name>
+        <manufacturer>Porsche OEM</manufacturer>
+        <listPrice currency="EUR">260.00</listPrice>
+        <compatibleModels>
+            <model>Panamera</model>
+            <model>Cayenne</model>
+        </compatibleModels>
+    </Part>
+
+    <Part Pid="P_008" P-P="D_1">
+        <name>Oil Filter</name>
+        <manufacturer>Porsche OEM</manufacturer>
+        <listPrice currency="EUR">25.00</listPrice>
+        <compatibleModels>
+            <model>911 Carrera</model>
+            <model>Boxster</model>
+            <model>Cayman</model>
+        </compatibleModels>
+    </Part>
+
+    <!--technicians-->
+
+    <Technician Tid="T_1" t-P="D_1">
+        <name>Anna Kovács</name>
+        <hireDate>2015-03-01</hireDate>
+        <certifications>
+            Porsche Specialist
+        </certifications>
+        <certifications>
+            ABS Systems
+        </certifications>
+        <phone>+36-30-765-4321</phone>
+    </Technician>
+
+    <Technician Tid="T_2" t-P="D_1">
+        <name>László Fekete</name>
+        <hireDate>2012-06-15</hireDate>
+        <certifications>
+            Engine Specialist
+        </certifications>
+        <certifications>
+            Turbo Systems
+        </certifications>
+        <phone>+36-20-101-2020</phone>
+    </Technician>
+
+    <Technician Tid="T_3" t-P="D_1">
+        <name>Réka Horváth</name>
+        <hireDate>2018-11-01</hireDate>
+        <certifications>
+            Transmission Specialist
+        </certifications>
+        <certifications>
+            Electronic Systems
+        </certifications>
+        <phone>+36-30-303-4040</phone>
+    </Technician>
+
+    <Technician Tid="T_4" t-P="D_1">
+        <name>Zoltán Varga</name>
+        <hireDate>2010-02-20</hireDate>
+        <certifications>
+            Suspension Specialist
+        </certifications>
+        <certifications>
+            Brake Systems
+        </certifications>
+        <phone>+36-70-505-6060</phone>
+    </Technician>
+
+    <Technician Tid="T_5" t-P="D_1">
+        <name>Katalin Mészáros</name>
+        <hireDate>2019-07-12</hireDate>
+        <certifications>
+            Climate Systems
+        </certifications>
+        <certifications>
+            Diagnostics
+        </certifications>
+        <phone>+36-20-707-8080</phone>
+    </Technician>
+
+</XPUYJYSzalon>

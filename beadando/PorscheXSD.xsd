@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+    <!-- Root -->
+    <xs:element name="XPUYJYSzalon">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="PorscheDealer" type="PorscheDealerType" minOccurs="0"/>
+                <xs:element name="Customer" type="CustomerType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="CustomerRel" type="CustomerRelType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="Vehicle" type="VehicleType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="Part" type="PartType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="Technician" type="TechnicianType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- PorscheDealer -->
+    <xs:complexType name="PorscheDealerType">
+        <xs:sequence>
+            <xs:element name="managerName" type="xs:string"/>
+            <xs:element name="numOfEmployees" type="xs:int"/>
+            <xs:element name="rating" type="xs:decimal"/>
+        </xs:sequence>
+        <xs:attribute name="lang" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <!-- Customer and address -->
+    <xs:complexType name="CustomerType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="phone" type="xs:string" minOccurs="0"/>
+            <xs:element name="email" type="xs:string" minOccurs="0"/>
+            <xs:element name="birthDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="address" type="AddressType" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="lang" type="xs:string" use="required"/>
+        <xs:attribute name="lang" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="AddressType">
+        <xs:sequence>
+            <xs:element name="city" type="xs:string" minOccurs="0"/>
+            <xs:element name="street" type="xs:string" minOccurs="0"/>
+            <xs:element name="houseNumber" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Customer relationship -->
+    <xs:complexType name="CustomerRelType">
+        <xs:sequence>
+            <xs:element name="customerRef" type="xs:string" minOccurs="0"/>
+            <xs:element name="loyaltyPoints" type="xs:int" minOccurs="0"/>
+            <xs:element name="preferedTechnician" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="lang" type="xs:string" use="required"/>
+        <xs:attribute name="lang" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <!-- Vehicle -->
+    <xs:complexType name="VehicleType">
+        <xs:sequence>
+            <xs:element name="model" type="xs:string"/>
+            <xs:element name="year" type="xs:gYear" minOccurs="0"/>
+            <xs:element name="color" type="xs:string" minOccurs="0"/>
+            <xs:element name="mileage" type="xs:integer" minOccurs="0"/>
+            <xs:element name="purchaseDate" type="xs:date" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="lang" type="xs:string" use="required"/>
+        <xs:attribute name="lang" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <!-- Part -->
+    <xs:complexType name="PartType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <xs:element name="manufacturer" type="xs:string" minOccurs="0"/>
+            <xs:element name="listPrice" type="PriceType" minOccurs="0"/>
+            <xs:element name="compatibleModels" type="CompatibleModelsType" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="lang" type="xs:string" use="required"/>
+        <xs:attribute name="lang" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="PriceType">
+        <xs:simpleContent>
+            <xs:extension base="xs:decimal">
+                <xs:attribute name="lang" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="CompatibleModelsType">
+        <xs:sequence>
+            <xs:element name="model" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Technician -->
+    <xs:complexType name="TechnicianType">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="hireDate" type="xs:date" minOccurs="0"/>
+            <xs:element name="certifications" type="CertificationsType" minOccurs="0"/>
+            <xs:element name="phone" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="lang" type="xs:string" use="required"/>
+        <xs:attribute name="lang" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="CertificationsType">
+        <xs:sequence>
+            <xs:element name="cert" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

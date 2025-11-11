@@ -16,7 +16,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-public class DOMWrite1 {
+public class DOMWriteXPUYJX1 {
 
     public static void main(String[] args) throws ParserConfigurationException,
     TransformerException {
