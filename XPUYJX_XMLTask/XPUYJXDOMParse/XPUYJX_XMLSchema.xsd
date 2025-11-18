@@ -39,14 +39,35 @@
             <xs:field xpath="@techID"/>
         </xs:key>
         <!-- Key References -->
-        <xs:keyref name="VehicleOwnerRef" refer="CustomerKey">
-            <xs:selector xpath=".//Vehicle"/>
-            <xs:field xpath="owner"/>
+        <xs:keyref name="VehicleDealerRef" refer="dealerID">
+            <xs:selector xpath="Vehicle"/>
+            <xs:field xpath="@V-P"/>
         </xs:keyref>
-        <xs:keyref name="TechnicianPrefRef" refer="TechnicianKey">
-            <xs:selector xpath=".//Customer/relationship"/>
-            <xs:field xpath="preferedTechnician"/>
+        <xs:keyref name="PartDealerRef" refer="dealerID">
+            <xs:selector xpath="Part"/>
+            <xs:field xpath="@P-P"/>
         </xs:keyref>
+        <xs:keyref name="PartDealerRef" refer="dealerID">
+            <xs:selector xpath="Part"/>
+            <xs:field xpath="@P-P"/>
+        </xs:keyref>
+        <xs:keyref name="PartDealerRef" refer="dealerID">
+            <xs:selector xpath="Part"/>
+            <xs:field xpath="@P-P"/>
+        </xs:keyref>
+        <xs:keyref name="CustomerRefer" refer="PurchaseID">
+            <xs:selector xpath="Customer"/>
+            <xs:field xpath="@P-C"/>
+        </xs:keyref>
+        <xs:keyref name="CustomerRelPorscheDealerRef" refer="dealerID">
+            <xs:selector xpath="CustomerRel"/>
+            <xs:field xpath="@D-C"/>
+        </xs:keyref>
+
+        <xs:unique name="UniqueVhehicle/Dealer">
+            <xs:selector xpath="Vehicle"/>
+            <xs:field xpath="@V-P"/>
+        </xs:unique>
 
     </xs:element>
 
@@ -70,7 +91,7 @@
             <xs:element name="address" type="AddressType" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="customerID" type="xs:ID" use="required"/>
-        <xs:attribute name="P-C" type="xs:string" use="required"/>
+        <xs:attribute name="P-C" type="xs:IDREF" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="AddressType">
@@ -88,8 +109,8 @@
             <xs:element name="loyaltyPoints" type="xs:int" minOccurs="0"/>
             <xs:element name="preferedTechnician" type="xs:IDREF" minOccurs="0"/>
         </xs:sequence>
-        <xs:attribute name="D-C" type="xs:ID" use="required"/>
-        <xs:attribute name="lang" type="xs:string" use="required"/>
+        <xs:attribute name="PurchaseID" type="xs:ID" use="required"/>
+        <xs:attribute name="D-C" type="xs:IDREF" use="required"/>
     </xs:complexType>
 
     <!-- Vehicle -->
@@ -101,8 +122,8 @@
             <xs:element name="mileage" type="xs:integer" minOccurs="0"/>
             <xs:element name="purchaseDate" type="xs:date" minOccurs="0"/>
         </xs:sequence>
-        <xs:attribute name="vehicleID" type="xs:ID" use="required"/>
-        <xs:attribute name="lang" type="xs:string" use="required"/>
+        <xs:attribute name="VIN" type="xs:ID" use="required"/>
+        <xs:attribute name="V-P" type="xs:IDREF" use="required"/>
     </xs:complexType>
 
     <!-- Part -->
@@ -114,7 +135,7 @@
             <xs:element name="compatibleModels" type="CompatibleModelsType" minOccurs="0"/>
         </xs:sequence>
         <xs:attribute name="partID" type="xs:ID" use="required"/>
-        <xs:attribute name="lang" type="xs:string" use="required"/>
+        <xs:attribute name="P-P" type="xs:IDREF" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="PriceType">
@@ -139,8 +160,8 @@
             <xs:element name="certifications" type="CertificationsType" minOccurs="0"/>
             <xs:element name="phone" type="xs:string" minOccurs="0"/>
         </xs:sequence>
-        <xs:attribute name="technicianID" type="xs:ID" use="required"/>
-        <xs:attribute name="lang" type="xs:string" use="required"/>
+        <xs:attribute name="techID" type="xs:ID" use="required"/>
+        <xs:attribute name="T-P" type="xs:IDREF" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="CertificationsType">

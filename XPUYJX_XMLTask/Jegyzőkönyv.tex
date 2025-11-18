@@ -1,0 +1,222 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[magyar]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+
+\usepackage{setspace}
+\onehalfspacing
+\frenchspacing
+\usepackage{geometry}
+\geometry{margin=3cm}
+\usepackage{ragged2e}
+\justifying
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+
+
+\lstset{
+  basicstyle=\ttfamily\small,      
+  backgroundcolor=\color{gray!10},
+  frame=single,
+  breaklines=true,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  literate=
+    {á}{{\'a}}1
+    {é}{{\'e}}1
+    {í}{{\'\i}}1
+    {ó}{{\'o}}1
+    {ö}{{\"o}}1
+    {ő}{{\H{o}}}1
+    {ú}{{\'u}}1
+    {ü}{{\"u}}1
+    {ű}{{\H{u}}}1
+}
+
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\Huge\bfseries JEGYZŐKÖNYV \par}
+    \vspace{1.5cm}
+    {\Large Webes adatkezelő környezetek \par}
+    \vspace{0.5cm}
+    {\Large Féléves feladat \par}
+    \vspace{0.5cm}
+    {\Large Egy Porsche márkakereskedés adatkezelő rendszere \par}
+
+    \vfill
+    \begin{flushright}
+        \textbf{Készítette:} Orosz Zalán Zétény\\[0.3cm]
+        \textbf{Neptunkód:} XPUYJX\\[0.3cm]
+        \textbf{Dátum:} 2025. november
+    \end{flushright}
+
+    \vspace{2cm}
+    {\large Miskolc, 2025}
+\end{titlepage}
+
+% ---------- TARTALOMJEGYZÉK ----------
+\tableofcontents
+\newpage
+
+\section{Bevezetés}
+A modern vállalati rendszerekben az adatok rendszerezése és kezelése kulcsfontosságú, különösen a prémium autókereskedések esetén, ahol egyszerre kell nyilvántartani az autókat, ügyfeleket, értékesítőket és szervizfolyamatokat. A Porsche márkakereskedések adatkezelési igényei sokrétűek: az értékesítési adatok, ügyféladatok és szervizinformációk integrált, könnyen kezelhető formában történő tárolása nélkülözhetetlen a hatékony működéshez.
+
+\section{Feladat leírása}
+Feladatnak egy Porsche márkakereskedés adatkezelő rendszerét választottam. A féléves feladat során célom az volt, hogy egy ilyen kereskedés adatstruktúráját modellezzem XML és XSD alapú rendszeren keresztül, valamint Java DOM API segítségével bemutassam az adatok feldolgozását, lekérdezését és módosítását.
+
+Ez a munka tehát bemutatja, hogyan lehet egy komplex, valós adatszerkezetet webbarát formában reprezentálni, és hogyan teszi lehetővé a Java-alapú programozás az adatok hatékony kezelését és feldolgozását.
+
+\section{Alapvető adatszerkezeti modellek és fileok}
+
+\subsection{Az adatbázis ER modell tervezése}
+
+A képen látható ER alapján: a PorscheDealer a központi entitás, minden más egyed idegen kulccsal kapcsolódik hozzá. Vehicle, Customer, Technician és Part egyaránt 1:N kapcsolatban állnak a dealer-rel; Customer és Vehicle között N:M kapcsolat van CustomerRel (rendelés) asszociatív entitással, amely extra adatokat (loyaltyPoints, preferredTechnician) tárol. Attribútumok: kulcsok (VIN, CustomerID, techID, partID), összetett (address → city, street, houseNumber), többértékűek (phone, certifications, compatibleModels) és normál mezők (name, model, year, stb.).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{XPUYJX_ER.png}
+\caption{A Porsche dealer ER modellje}
+\label{fig: A Porsche dealer ER modellje}
+\end{figure}
+
+\subsection{Az adatbázis konvertálása XDM modellre}
+
+Átalakítottam az ER-modellt XDM-formára: bevezettem egy mesterséges gyökérelemet "XPUYJXszalon", amelynek gyerekei a "PorscheDealer", "Customer", "CustomerRel", "Vehicle", "Part", "Technician". Az XDM-ben minden tulajdonság külön gyerekelem, a kulcsok attribútumokként jelennek meg — a modell hierarchikus felépítésű.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{XPUYJX_XDM.png}
+\caption{A Porsche dealer XDM modellje}
+\label{fig: A Porsche dealer XDM modellje}
+\end{figure}
+
+\subsection{Az XDM modell alapján XML dokumentum készítése}
+
+Az XML struktúrája az XDM szerkezete alapján készült. A gyökérelem "<XPUYJYSzalon>", ez tartalmazza gyerekelemként az összes többi entitást (pl.: <porscheDealer>, <Costumer>). Ezeknek saját egyedi azonosító attribútumaik vannak (DealerID, Cid). A kódban található többértékű tulajdonságok több értékkel rendelkeznek.
+
+\begin{lstlisting}[language=XML, caption={A Porsche dealer adatszerkezet részlete}]
+ <PorscheDealer dealerID="D_1">
+        <managerName>Gábor Szabó</managerName>
+        <numOfEmployees>25</numOfEmployees>
+        <rating>4.8</rating>
+    </PorscheDealer>
+
+    <Customer Cid="C_1" P-C="PU_1">
+        <name>John Doe</name>
+        <phone>+36-20-123-4567</phone>
+        <email>john.doe@example.com</email>
+        <birthDate>1985-04-12</birthDate>
+        <address>
+            <city>Budapest</city>
+            <street>Fő utca</street>
+            <houseNumber>10</houseNumber>
+        </address>
+    </Customer>
+\end{lstlisting}
+
+\subsection{Az XML dokumentum alapján XMLSchema készítése}
+
+Az XSD az XML dokumentum alapján készült. A komplex típusok elemként és attribútumként jelennek meg. Minden fő elem saját típust kapott, és az összetett elemek külön típusokat kaptak.
+
+\begin{lstlisting}[language=XML, caption={Az XSD modell részlete}]
+<xs:complexType name="PorscheDealerType">
+        <xs:sequence>
+            <xs:element name="managerName" type="xs:string"/>
+            <xs:element name="numOfEmployees" type="xs:int"/>
+            <xs:element name="rating" type="xs:decimal"/>
+        </xs:sequence>
+        <xs:attribute name="dealerID" type="xs:ID" use="required"/>
+    </xs:complexType>
+\end{lstlisting}
+
+\section{Java adatszerkezet megvalósítása DOM API segítségével}
+
+\subsection{Adatolvasás}
+
+A program célja, hogy XML dokumentumból Java objektum-szerűen kinyerje és megjelenítse az adatokat. A feldolgozás az org.w3c.dom könyvtár DOM API-ján keresztül történik.
+
+\begin{lstlisting}[language=java, caption={Javaban dokumentum létrehozás}]
+File xmlFile = new File("XPUYJX_XML.xml");
+DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+DocumentBuilder dBuilder = factory.newDocumentBuilder();
+Document doc = dBuilder.parse(xmlFile);
+doc.getDocumentElement().normalize();
+\end{lstlisting}
+
+\begin{lstlisting}[language=java, caption={Javaban dealer objektum létrehozás}]
+ NodeList dealers = doc.getElementsByTagName("PorscheDealer");
+        System.out.println("\nPorscheDealerek:");
+        for (int i = 0; i < dealers.getLength(); i++) {
+            Element pd = (Element) dealers.item(i);
+            System.out.println("Dealer ID: " + pd.getAttribute("dealerID"));
+            System.out.println("  Manager: " + textOf(pd, "managerName"));
+            System.out.println("  Employees: " + textOf(pd, "numOfEmployees"));
+            System.out.println("  Rating: " + textOf(pd, "rating"));
+        }
+}
+\end{lstlisting}
+
+A programrészlet feladata, hogy feldolgozza a dealer elemeit és azok attribútumait, majd kiírja azokat.
+\newpage
+
+\subsection{Adat-lekérdezés}
+
+A Read-del ellentétben a Query nem csupán adatkiírásra szolgál, hanem emberileg feldolgozható és olvasható formában jeleníti meg az adatokat.
+
+\begin{lstlisting}[language=java, caption={Javaban rendezett adatkiírás}]
+NodeList vehicles = doc.getElementsByTagName("Vehicle");
+        System.out.println("\nJárművek:");
+        for (int i = 0; i < vehicles.getLength(); i++) {
+            Element v = (Element) vehicles.item(i);
+            System.out.println("  [VIN=" + v.getAttribute("VIN") + ", V-P=" + v.getAttribute("V-P") + "] " +
+                    textOf(v, "model") + " (" + textOf(v, "year") + ") - " + textOf(v, "color") +
+                    ", mileage: " + textOf(v, "mileage") + ", purchased: " + textOf(v, "purchaseDate"));
+        }
+\end{lstlisting}
+
+Ez a programrészlet kinyeri az attribútumokat és az elemeket, majd tömör, emberek számára olvasható formátumban írja ki azokat.
+
+\subsection{Adatmódosítás}
+
+\begin{lstlisting}[language=java, caption={Javaban adat változtatás}]
+ Element custC1 = findElementByAttribute(doc.getElementsByTagName("Customer"), "Cid", "C_1");
+            if (custC1 != null) {
+                Element phone = firstElement(custC1, "phone");
+                if (phone != null) {
+                    phone.setTextContent("+36-20-999-9999");
+                    System.out.println("Customer C_1 phone módosítva: " + phone.getTextContent());
+                }
+
+\end{lstlisting}
+Ez a programrészlet megkeresi a Customer elemek között a C1 azonosítójú vevőt (Customer) az Cid attribútum alapján. Ha a keresett elem megtalálható, akkor belül megkeresi a phone al-elemet, és ha az létezik, módosítja annak tartalmát a megadott telefonszámra (+36-20-999-9999). Végül kiírja a konzolra, hogy a C1 azonosítójú vevő telefonszáma sikeresen módosítva lett, és megjeleníti az új értéket.
+
+\newpage
+
+\begin{lstlisting}[language=java, caption={Javaban file-ba mentés}]
+TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer transformer = tf.newTransformer();
+            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+            DOMSource source = new DOMSource(doc);
+            transformer.transform(source, new StreamResult(System.out));
+
+            File outFile = new File("XPUYJX_XML_modified.xml");
+            transformer.transform(source, new StreamResult(outFile));
+            System.out.println("\nMentve: " + outFile.getAbsolutePath());
+            
+\end{lstlisting}
+
+Ez a kódrészlet létrehoz egy Transformer objektumot, amely a DOM XML dokumentumot UTF-8 kódolással, behúzásokkal formázva írja ki a konzolra, majd ugyanazt az XML-t elmenti egy fájlba (XPUYJXXMLmodified.xml). A program így biztosítja, hogy a módosított XML olvasható és rendezett formában kerüljön tárolásra.
+
+\end{document}
