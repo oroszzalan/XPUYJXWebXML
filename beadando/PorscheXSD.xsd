@@ -14,6 +14,40 @@
                 <xs:element name="Technician" type="TechnicianType" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
         </xs:complexType>
+    
+
+
+          <!-- Key Definitions -->
+        <xs:key name="DealerKey">
+            <xs:selector xpath="PorscheDealer"/>
+            <xs:field xpath="@dealerID"/>
+        </xs:key>
+        <xs:key name="CustomerKey">
+            <xs:selector xpath="Customer"/>
+            <xs:field xpath="@customerID"/>
+        </xs:key>
+        <xs:key name="VehicleKey">
+            <xs:selector xpath="Vehicle"/>
+            <xs:field xpath="@VIN"/>
+        </xs:key>
+        <xs:key name="PartKey">
+            <xs:selector xpath="Part"/>
+            <xs:field xpath="@partID"/>
+        </xs:key>
+        <xs:key name="TechnicianKey">
+            <xs:selector xpath="Technician"/>
+            <xs:field xpath="@techID"/>
+        </xs:key>
+        <!-- Key References -->
+        <xs:keyref name="VehicleOwnerRef" refer="CustomerKey">
+            <xs:selector xpath=".//Vehicle"/>
+            <xs:field xpath="owner"/>
+        </xs:keyref>
+        <xs:keyref name="TechnicianPrefRef" refer="TechnicianKey">
+            <xs:selector xpath=".//Customer/relationship"/>
+            <xs:field xpath="preferedTechnician"/>
+        </xs:keyref>
+
     </xs:element>
 
     <!-- PorscheDealer -->
@@ -23,7 +57,7 @@
             <xs:element name="numOfEmployees" type="xs:int"/>
             <xs:element name="rating" type="xs:decimal"/>
         </xs:sequence>
-        <xs:attribute name="lang" type="xs:string" use="required"/>
+        <xs:attribute name="dealerID" type="xs:ID" use="required"/>
     </xs:complexType>
 
     <!-- Customer and address -->
@@ -35,8 +69,8 @@
             <xs:element name="birthDate" type="xs:date" minOccurs="0"/>
             <xs:element name="address" type="AddressType" minOccurs="0"/>
         </xs:sequence>
-        <xs:attribute name="lang" type="xs:string" use="required"/>
-        <xs:attribute name="lang" type="xs:string" use="optional"/>
+        <xs:attribute name="customerID" type="xs:ID" use="required"/>
+        <xs:attribute name="P-C" type="xs:string" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="AddressType">
@@ -50,12 +84,12 @@
     <!-- Customer relationship -->
     <xs:complexType name="CustomerRelType">
         <xs:sequence>
-            <xs:element name="customerRef" type="xs:string" minOccurs="0"/>
+            <xs:element name="customerRef" type="xs:IDREF" minOccurs="0"/>
             <xs:element name="loyaltyPoints" type="xs:int" minOccurs="0"/>
-            <xs:element name="preferedTechnician" type="xs:string" minOccurs="0"/>
+            <xs:element name="preferedTechnician" type="xs:IDREF" minOccurs="0"/>
         </xs:sequence>
+        <xs:attribute name="D-C" type="xs:ID" use="required"/>
         <xs:attribute name="lang" type="xs:string" use="required"/>
-        <xs:attribute name="lang" type="xs:string" use="optional"/>
     </xs:complexType>
 
     <!-- Vehicle -->
@@ -67,8 +101,8 @@
             <xs:element name="mileage" type="xs:integer" minOccurs="0"/>
             <xs:element name="purchaseDate" type="xs:date" minOccurs="0"/>
         </xs:sequence>
+        <xs:attribute name="vehicleID" type="xs:ID" use="required"/>
         <xs:attribute name="lang" type="xs:string" use="required"/>
-        <xs:attribute name="lang" type="xs:string" use="optional"/>
     </xs:complexType>
 
     <!-- Part -->
@@ -79,8 +113,8 @@
             <xs:element name="listPrice" type="PriceType" minOccurs="0"/>
             <xs:element name="compatibleModels" type="CompatibleModelsType" minOccurs="0"/>
         </xs:sequence>
+        <xs:attribute name="partID" type="xs:ID" use="required"/>
         <xs:attribute name="lang" type="xs:string" use="required"/>
-        <xs:attribute name="lang" type="xs:string" use="optional"/>
     </xs:complexType>
 
     <xs:complexType name="PriceType">
@@ -105,8 +139,8 @@
             <xs:element name="certifications" type="CertificationsType" minOccurs="0"/>
             <xs:element name="phone" type="xs:string" minOccurs="0"/>
         </xs:sequence>
+        <xs:attribute name="technicianID" type="xs:ID" use="required"/>
         <xs:attribute name="lang" type="xs:string" use="required"/>
-        <xs:attribute name="lang" type="xs:string" use="optional"/>
     </xs:complexType>
 
     <xs:complexType name="CertificationsType">
@@ -114,5 +148,9 @@
             <xs:element name="cert" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
+
+
+      
+
 
 </xs:schema>
